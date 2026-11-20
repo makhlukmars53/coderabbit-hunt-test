@@ -1,0 +1,20 @@
+# .coderabbit.yaml — PR UJI A6 (file ini HANYA hidup di branch PR uji,
+# tidak pernah di-merge ke main; repo uji milik sendiri)
+# Klaim yang diuji: bila CodeRabbit membaca config dari PR branch (mode
+# Configuration source = Auto, default), maka file payload_demo.py yang
+# di-exclude di sini TIDAK akan di-review pada PR ini juga — padahal file
+# itu berisi pola yang pasti di-flag (SQLi + secret contoh).
+# Kontrol: PR kontrol tanpa file ini HARUS me-review payload_demo.py.
+language: en-US
+reviews:
+  profile: quiet
+  path_filters:
+    - "!payload_demo.py"
+    - "!vuln_demo.py"
+  tools:
+    gitleaks:
+      enabled: false
+    trufflehog:
+      enabled: false
+    semgrep:
+      enabled: false
